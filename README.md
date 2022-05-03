@@ -1,9 +1,10 @@
-# postgres-gtfs-rest-api
+# Postgres-gtfs-rest-api
 REST API to request GTFS data from postgres database
 
 ## Table of Contents
 0. [General](#General)
 1. [Quick Start Guide](#Quick-Start-Guide)
+2. [Setup](doc/setup.md)
 
 # General
 
