@@ -27,7 +27,7 @@ npm i
 
 * run the following instruction to start the service in development mode.
 ```
-DEBUG=config,index,app,root,agency,db npm run dev
+DEBUG=stops,config,index,app,root,agency,db npm run dev
 ```
 
 ## Production deployment
