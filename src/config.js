@@ -15,5 +15,6 @@ const config = {
 };
 
 DEBUG('config host: '+config.db.host);
+DEBUG('config port: '+config.db.port);
 module.exports = config;
 DEBUG('config done.');
