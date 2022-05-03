@@ -9,6 +9,7 @@ const EXPRESS = require("express");
 const CORS = require("cors");
 const ROOTROUTER = require('./route/root');
 const AGENCYROUTER = require('./route/agency');
+const AGENCYALLROUTER = require('./route/agency-all');
 
 //TODO make this list available via config
 //limit access to this origin list
@@ -44,6 +45,7 @@ APP.use(CORS({
 
 APP.use('/', ROOTROUTER);
 APP.use('/agency', AGENCYROUTER);
+APP.use('/agency-all', AGENCYALLROUTER);
 
 module.exports=APP;
 DEBUG('index done..');
