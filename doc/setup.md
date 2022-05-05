@@ -75,6 +75,8 @@ or
 pm2 status
 ```
 
+* if service shall be provided to other consumers as localhost, adjust firewall accordingsly
+
 ## Manual Service Invocation For Development
 * call service manually
 ```
