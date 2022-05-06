@@ -17,8 +17,7 @@ const ROUTESALLROUTER = require('./route/routes-all');
 //TODO make this list available via config
 //limit access to this origin list
 let whitelist = [
-    'http://localhost:8080',
-    'http://localhost:8081'
+    'https://TODO'
 ];
 
 const APP = EXPRESS();
