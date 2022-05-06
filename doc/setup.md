@@ -10,8 +10,8 @@ use the following steps to setup this service
 * archive project and copy onto host system
 ```
 cd ..
-tar -czvf <archive name>.tar.gz --exclude={"<root dir>/.git","<root dir>/node_modules"} postgres-gtfs-rest-api/
-scp -P <host ssh port> <archive name>.tar.gz  <user>@<host>.<domain>:/home/<user>/
+tar -czvf <archive name>.tar.gz --exclude={"postgres-gtfs-rest-api/.git","postgres-gtfs-rest-api/node_modules"} postgres-gtfs-rest-api/
+scp -P <host ssh port> <archive name>.tar.gz  <user>@<host>.<domain>:~
 ```
 
 * [Setup Node.js and NPM](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/node.md) on target system
@@ -20,7 +20,7 @@ scp -P <host ssh port> <archive name>.tar.gz  <user>@<host>.<domain>:/home/<user
 
 * copy service source into the working folder
 ```
-sudo tar -xzf /home/begerad/<archive name>.tar.gz -C /opt/
+sudo tar -xzf ~/<archive name>.tar.gz -C /opt/
 ```
 
 * install dependencies
