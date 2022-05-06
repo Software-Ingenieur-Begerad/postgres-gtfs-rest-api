@@ -75,7 +75,9 @@ or
 pm2 status
 ```
 
-* if service shall be provided to other consumers as localhost, adjust firewall accordingsly
+* configure web server as proxy for instance with this [example](etc/apache2/sites-available/example.conf) config file for Apache2
+
+* if service shall be provided to other consumers than localhost, adjust firewall accordingsly
 
 ## Manual Service Invocation For Development
 * call service manually
