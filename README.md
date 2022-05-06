@@ -26,11 +26,18 @@ npm i
 
 ## Development setup
 
-* run the following instruction to start the service in development mode.
+* run the following instruction to start the service in development mode
 ```
 DEBUG=routes,frequencies,stops,config,index,app,root,agency,db npm run dev
 ```
 
 ## Production deployment
 
-TODO
+* run the following instruction to start the service in production mode
+```
+npm run start
+```
+
+# Link
+
+* [ProxyPass apache https to a node server](https://stackoverflow.com/questions/34865193/proxypass-apache-https-to-a-node-server)
