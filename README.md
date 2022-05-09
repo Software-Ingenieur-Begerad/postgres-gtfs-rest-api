@@ -30,7 +30,7 @@ npm i
 
 * run the following instruction to start the service in development mode
 ```
-DEBUG=trip-head-sign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
+DEBUG=route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
 ```
 
 ## Production deployment
