@@ -8,8 +8,7 @@ const AGENCYNAME = require('../service/agency-name');
 //GET listing
 ROUTER.get('/', async function(req, res, next) {
   try {
-      res.json(await AGENCYNAME.getAgencyName(req.query.rout
-					      eid));
+      res.json(await AGENCYNAME.getAgencyName(req.query.routeid));
   } catch (err) {
     console.error(`Error while getting agency_name, msg: `, err.message);
     res.status(err.statusCode || 500).json({'message': err.message});
