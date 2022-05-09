@@ -3,15 +3,12 @@ DEBUG('root start...');
 
 const EXPRESS = require('express');
 const ROUTER = EXPRESS.Router();
-
-const ALIVE={
-    'message': 'alive'
-};
+const UTILS=require('../utils');
 
 /* GET home page. */
 ROUTER.get('/', function(req, res, next) {
-    DEBUG('root msg: '+ALIVE.message);
-    res.json(ALIVE);
+    DEBUG('root msg: '+UTILS.MSGS.alive);
+    res.json(UTILS.MSGS.alive);
 });
 
 module.exports = ROUTER;
