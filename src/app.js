@@ -15,6 +15,7 @@ const FREQUENCIESALLROUTER = require('./route/frequencies-all');
 const ROUTESALLROUTER = require('./route/routes-all');
 const TRIPHEADSIGN = require('./route/trip-headsign');
 const ROUTESHORTNAME = require('./route/route-short-name');
+const AGENCYNAME = require('./route/agency-name');
 
 //TODO make this list available via config
 //limit access to this origin list
@@ -55,6 +56,7 @@ APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
 APP.use('/trip-headsign', TRIPHEADSIGN);
 APP.use('/route-short-name', ROUTESHORTNAME);
+APP.use('/agency-name', AGENCYNAME);
 
 module.exports=APP;
 DEBUG('index done..');
