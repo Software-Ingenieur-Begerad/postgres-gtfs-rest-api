@@ -13,6 +13,7 @@ const AGENCYALLROUTER = require('./route/agency-all');
 const STOPSALLROUTER = require('./route/stops-all');
 const FREQUENCIESALLROUTER = require('./route/frequencies-all');
 const ROUTESALLROUTER = require('./route/routes-all');
+const TRIPHEADSIGN = require('./route/trip-headsign');
 
 //TODO make this list available via config
 //limit access to this origin list
@@ -51,6 +52,7 @@ APP.use('/agency-all', AGENCYALLROUTER);
 APP.use('/stops-all', STOPSALLROUTER);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
+APP.use('/trip-headsign', TRIPHEADSIGN);
 
 module.exports=APP;
 DEBUG('index done..');
