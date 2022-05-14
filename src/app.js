@@ -7,21 +7,44 @@ const COMPRESSION = require('compression');
 
 const EXPRESS = require("express");
 const CORS = require("cors");
+
+//get API root with alive msg
 const ROOTROUTER = require('./route/root');
+
+//get agencies using pagination
 const AGENCYROUTER = require('./route/agency');
+
+//get all agencies
 const AGENCYALLROUTER = require('./route/agency-all');
+
+//get agency_name from route_id
+const AGENCYNAMEROUTER = require('./route/agency-name');
+
+//get agency_url from route_id
+const AGENCYURLROUTER = require('./route/agency-url');
+
+//get all stops
 const STOPSALLROUTER = require('./route/stops-all');
+
+//get all frequencies
 const FREQUENCIESALLROUTER = require('./route/frequencies-all');
+
+//get all routes
 const ROUTESALLROUTER = require('./route/routes-all');
-const TRIPHEADSIGN = require('./route/trip-headsign');
+
+//get trip_headsign from trip_short_name
+const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
+
+//get all trips that belong to a certain route_short_name
+const TRIPSROUTER = require('./route/trips');
+
+//get route_short_name from trip_short_name
 const ROUTESHORTNAME = require('./route/route-short-name');
-const AGENCYNAME = require('./route/agency-name');
-const AGENCYURL = require('./route/agency-url');
 
 //TODO make this list available via config
 //limit access to this origin list
 let whitelist = [
-    'https://TODO'
+    'http(s)://foo.bar'
 ];
 
 const APP = EXPRESS();
@@ -52,13 +75,14 @@ APP.use(CORS({
 APP.use('/', ROOTROUTER);
 APP.use('/agency', AGENCYROUTER);
 APP.use('/agency-all', AGENCYALLROUTER);
+APP.use('/agency-name', AGENCYNAMEROUTER);
+APP.use('/agency-url', AGENCYURLROUTER);
 APP.use('/stops-all', STOPSALLROUTER);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
-APP.use('/trip-headsign', TRIPHEADSIGN);
+APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
+APP.use('/trips', TRIPSROUTER);
 APP.use('/route-short-name', ROUTESHORTNAME);
-APP.use('/agency-name', AGENCYNAME);
-APP.use('/agency-url', AGENCYURL);
 
 module.exports=APP;
 DEBUG('index done..');

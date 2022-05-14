@@ -30,7 +30,7 @@ npm i
 
 * run the following instruction to start the service in development mode
 ```
-DEBUG=agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
+DEBUG=trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
 ```
 
 ## Production deployment
@@ -43,6 +43,17 @@ npm run start
 # SQL Statemants
 
 ## VBN GTFS Data Set
+
+* get all trips that belong to a route
+```
+select agency.agency_name, routes.route_short_name, routes.agency_id, trips.route_id, trips.service_id, trips.trip_id from agency, trips, routes where agency.agency_id=routes.agency_id and trips.route_id=routes.route_id and routes.route_short_name='411';
+```
+
+* get all routes from agency
+
+```
+select route_short_name from routes,agency where routes.agency_id=agency.agency_id and agency.agency_id='381';
+```
 
 * get trip direction from trip number
 
