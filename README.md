@@ -30,7 +30,7 @@ npm i
 
 * run the following instruction to start the service in development mode
 ```
-DEBUG=trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
+DEBUG=service,trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
 ```
 
 ## Production deployment
@@ -42,7 +42,18 @@ npm run start
 
 # SQL Statemants
 
+## To-do List
+
+* How many routes is an agency serving in the schedule?
+
+* Show a calendar for a trip
+
 ## VBN GTFS Data Set
+
+* get a certain service by service_id
+```
+select * from calendar where service_id='675';
+```
 
 * get all trips that belong to a route
 ```

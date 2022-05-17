@@ -41,6 +41,9 @@ const TRIPSROUTER = require('./route/trips');
 //get route_short_name from trip_short_name
 const ROUTESHORTNAME = require('./route/route-short-name');
 
+//get service by service_id
+const ROUTESERVICE = require('./route/service');
+
 //TODO make this list available via config
 //limit access to this origin list
 let whitelist = [
@@ -83,6 +86,7 @@ APP.use('/routes-all', ROUTESALLROUTER);
 APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
 APP.use('/route-short-name', ROUTESHORTNAME);
+APP.use('/service', ROUTESERVICE);
 
 module.exports=APP;
 DEBUG('index done..');
