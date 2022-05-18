@@ -44,6 +44,9 @@ const ROUTESHORTNAME = require('./route/route-short-name');
 //get service by service_id
 const ROUTESERVICE = require('./route/service');
 
+//get all service days that belong to a certain route_short_name
+const ROUTESERVICEDAYS = require('./route/servicedays');
+
 //TODO make this list available via config
 //limit access to this origin list
 let whitelist = [
@@ -87,6 +90,7 @@ APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
 APP.use('/route-short-name', ROUTESHORTNAME);
 APP.use('/service', ROUTESERVICE);
+APP.use('/servicedays', ROUTESERVICEDAYS);
 
 module.exports=APP;
 DEBUG('index done..');
