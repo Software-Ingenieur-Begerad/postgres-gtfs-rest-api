@@ -63,6 +63,9 @@ async function getServiceDays(routeshortname = 0) {
 	}
     }
     debug('map size: '+map.size);
+
+    //TODO Return object or array?
+    //return mapping.times2Array(map);
     return mapping.times2Obj(map);
 }
       

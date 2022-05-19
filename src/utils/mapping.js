@@ -42,6 +42,16 @@ function createEntry(map, key, value){
     map.set(key,value);
 }
 
+function times2Array(map){
+    let array=[];
+    map.forEach((value,key)=>{
+	//debug('key: '+key+', value: '+value);
+	array.push(trips2Array(value));
+	//debug('array: '+array);
+    });
+    return array;
+}
+
 function times2Obj(map){
     let object = {};
     map.forEach((value,key) => {
@@ -52,11 +62,16 @@ function times2Obj(map){
     return object;
 }
 
+function trips2Array(map){
+    let array=Array.from(map.values());
+    //debug('array: '+array);
+    return array;
+}
+
 function trips2Obj(map){
     let object={};
     map.forEach((value,key)=>{
-	//debug('key: '+key);
-	//debug('value: '+value);
+	//debug('key: '+key+', value: '+value);
 	object[key]=value;
     });
     //debug('JSON stringify object: '+JSON.stringify(object));
@@ -65,5 +80,6 @@ function trips2Obj(map){
 
 module.exports={
     updateMap,
-    times2Obj
+    times2Obj,
+    times2Array
 };
