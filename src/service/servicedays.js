@@ -9,10 +9,10 @@ const db = require('./db');
 async function getServiceDays(routeshortname = 0) {
     debug('routeshortname: '+routeshortname);
     const queryTrips=`select agency.agency_name, routes.route_short_name, routes.agency_id, trips.route_id, trips.service_id, trips.trip_id, trips.trip_short_name from agency, trips, routes where agency.agency_id=routes.agency_id and trips.route_id=routes.route_id and routes.route_short_name='${routeshortname}';`
-    debug('queryTrips: '+queryTrips);
+    //debug('queryTrips: '+queryTrips);
     const dataTrips = await db.query(queryTrips);
     const len=dataTrips.length;
-    debug('len: '+len);
+    debug('trips len: '+len);
 
     const map=new Map();
 
@@ -62,7 +62,7 @@ async function getServiceDays(routeshortname = 0) {
 	    dateNext=new Date(dateNext.setDate(dateNext.getDate()+1));
 	}
     }
-    debug('map.size: '+map.size);
+    debug('map size: '+map.size);
     return mapping.times2Obj(map);
 }
       
