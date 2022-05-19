@@ -50,8 +50,6 @@ async function getServiceDays(routeshortname = 0) {
 
 	while(dateNext.getTime()<=dateEnd.getTime()){
 	    let weekday=dateNext.getDay();
-	    //debug('weekday: '+weekday);
-
 	    if((weekday===date.weekday.monday && monday) ||
 	       (weekday===date.weekday.tuesday && tuesday) ||
 	       (weekday===date.weekday.wednesday && wednesday) ||
@@ -59,16 +57,13 @@ async function getServiceDays(routeshortname = 0) {
 	       (weekday===date.weekday.friday && friday) ||
 	       (weekday===date.weekday.saturday && saturday) ||
 	       (weekday===date.weekday.sunday && sunday)){
-		//update map
 		mapping.updateMap(dateNext.getTime(),tripId,tripShortName,map);
 	    }
 	    dateNext=new Date(dateNext.setDate(dateNext.getDate()+1));
 	}
     }
-
     debug('map.size: '+map.size);
-
-    return map;
+    return mapping.times2Obj(map);
 }
       
 module.exports = {
