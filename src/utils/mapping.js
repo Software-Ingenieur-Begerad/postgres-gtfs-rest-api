@@ -58,8 +58,11 @@ function times2Obj(map){
 	trips2Obj(value);
 	object[key] = trips2Obj(value);
     });
-    //debug('JSON stringify object: '+JSON.stringify(object));
-    return object;
+    let objSorted=Object.keys(object).sort().reduce(function (result, key) {
+	result[key] = object[key];
+	return result;
+    }, {});
+    return objSorted;
 }
 
 function trips2Array(map){
