@@ -3,6 +3,7 @@ package-lock.json
 .env~
 f
 p
+.env*
 
 # Logs
 logs

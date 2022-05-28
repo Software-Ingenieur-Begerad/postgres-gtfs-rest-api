@@ -1,5 +1,5 @@
 const DEBUG=require('debug')('app');
-DEBUG('index start...');
+DEBUG('app start...');
 
 require('dotenv').config();
 const HELMET = require('helmet');
@@ -47,6 +47,9 @@ const ROUTESERVICE = require('./route/service');
 //get all service days that belong to a certain route_short_name
 const ROUTESERVICEDAYS = require('./route/servicedays');
 
+//get all service with counts of routes
+const ROUTESERVICEOVERVIEW = require('./route/service-overview');
+
 //TODO make this list available via config
 //limit access to this origin list
 let whitelist = [
@@ -91,6 +94,7 @@ APP.use('/trips', TRIPSROUTER);
 APP.use('/route-short-name', ROUTESHORTNAME);
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
+APP.use('/service-overview', ROUTESERVICEOVERVIEW);
 
 module.exports=APP;
-DEBUG('index done..');
+DEBUG('app done..');
