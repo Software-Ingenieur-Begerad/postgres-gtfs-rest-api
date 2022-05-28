@@ -52,6 +52,7 @@ function times2Array(map){
     return array;
 }
 
+//TODO make function generic
 function times2Obj(map){
     let object = {};
     map.forEach((value,key) => {
@@ -65,6 +66,7 @@ function times2Obj(map){
     return objSorted;
 }
 
+//TODO make function generic
 function trips2Array(map){
     let array=Array.from(map.values());
     //debug('array: '+array);
