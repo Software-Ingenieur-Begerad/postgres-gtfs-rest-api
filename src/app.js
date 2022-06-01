@@ -32,6 +32,9 @@ const FREQUENCIESALLROUTER = require('./route/frequencies-all');
 //get all routes
 const ROUTESALLROUTER = require('./route/routes-all');
 
+//get number of routes belonging to the same agency_id
+const ROUTECOUNT = require('./route/route-count');
+
 //get trip_headsign from trip_short_name
 const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
 
@@ -89,6 +92,7 @@ APP.use('/agency-url', AGENCYURLROUTER);
 APP.use('/stops-all', STOPSALLROUTER);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
+APP.use('/route-count', ROUTECOUNT);
 APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
 APP.use('/route-short-name', ROUTESHORTNAME);
