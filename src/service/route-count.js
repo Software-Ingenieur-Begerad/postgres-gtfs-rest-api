@@ -6,7 +6,7 @@ const db = require('./db');
 async function getRouteCount(agencyid = 0) {
     DEBUG('agencyid: '+agencyid);
     const QUERY=`SELECT route_id FROM routes WHERE agency_id='${agencyid}';`
-    DEBUG('QUERY: '+QUERY);
+    //DEBUG('QUERY: '+QUERY);
     const res=await db.query(QUERY);
     const len=res.length
     DEBUG('len: '+len);

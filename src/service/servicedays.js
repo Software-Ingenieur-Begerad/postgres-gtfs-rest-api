@@ -9,44 +9,44 @@ const db = require('./db');
 async function getServiceDays(routeshortname = 0) {
     debug('routeshortname: '+routeshortname);
     const queryTrips=`select agency.agency_name, routes.route_short_name, routes.agency_id, trips.route_id, trips.service_id, trips.trip_id, trips.trip_short_name from agency, trips, routes where agency.agency_id=routes.agency_id and trips.route_id=routes.route_id and routes.route_short_name='${routeshortname}';`
-    //debug('queryTrips: '+queryTrips);
+    ////debug('queryTrips: '+queryTrips);
     const dataTrips = await db.query(queryTrips);
     const len=dataTrips.length;
-    debug('trips len: '+len);
+    //debug('trips len: '+len);
 
     const map=new Map();
 
     for(var i=0;i<len;i++){
 	const tripId=dataTrips[i].trip_id;
-	//debug('tripId: %s',tripId);
+	////debug('tripId: %s',tripId);
 
     	const tripShortName=dataTrips[i].trip_short_name;
-	//debug('tripShortName: %s',tripShortName);
+	////debug('tripShortName: %s',tripShortName);
 	const serviceId=dataTrips[i].service_id;
-	//debug('serviceId: %s',serviceId);
+	////debug('serviceId: %s',serviceId);
 
 	const queryServices=`select * from calendar where service_id='${serviceId}';`
-	//debug('queryServices: '+queryServices);
+	////debug('queryServices: '+queryServices);
 	const dataServices = await db.query(queryServices);
-	//debug('dataServices: '+dataServices[0].service_id);
+	////debug('dataServices: '+dataServices[0].service_id);
 
 	const monday=dataServices[0].monday;
 	const tuesday=dataServices[0].tuesday;
-	//debug('tuesday: '+tuesday);
+	////debug('tuesday: '+tuesday);
 	const wednesday=dataServices[0].wednesday;
-	//debug('wednesday: '+wednesday);
+	////debug('wednesday: '+wednesday);
 	const thursday=dataServices[0].thursday;
 	const friday=dataServices[0].friday;
 	const saturday=dataServices[0].saturday;
 	const sunday=dataServices[0].sunday;
 	const start_date=dataServices[0].start_date;
 	const dateStart=gtfs.gtfsDate2NodeDate(start_date);
-	//debug('dateStart: '+dateStart);
+	////debug('dateStart: '+dateStart);
 	const end_date=dataServices[0].end_date;
 	const dateEnd=gtfs.gtfsDate2NodeDate(end_date);
-	//debug('dateEnd: '+dateEnd);
+	////debug('dateEnd: '+dateEnd);
 	let dateNext=new Date(dateStart);
-	//debug('dateNext: '+dateNext);
+	////debug('dateNext: '+dateNext);
 
 	while(dateNext.getTime()<=dateEnd.getTime()){
 	    let weekday=dateNext.getDay();

@@ -32,15 +32,6 @@ const FREQUENCIESALLROUTER = require('./route/frequencies-all');
 //get all routes
 const ROUTESALLROUTER = require('./route/routes-all');
 
-//get number of routes belonging to the same agency_id
-const ROUTECOUNT = require('./route/route-count');
-
-//get trip_headsign from trip_short_name
-const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
-
-//get all trips that belong to a certain route_short_name
-const TRIPSROUTER = require('./route/trips');
-
 //get route_short_name from trip_short_name
 const ROUTESHORTNAME = require('./route/route-short-name');
 
@@ -52,6 +43,18 @@ const ROUTESERVICEDAYS = require('./route/servicedays');
 
 //get all service with counts of routes
 const ROUTESERVICEOVERVIEW = require('./route/service-overview');
+
+//get number of routes belonging to the same agency_id
+const ROUTECOUNT = require('./route/route-count');
+
+//get trip_headsign from trip_short_name
+const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
+
+//get all trips that belong to a certain route_short_name
+const TRIPSROUTER = require('./route/trips');
+
+//get number of trips belonging to the same agency_id
+const TRIPCOUNT = require('./route/trip-count');
 
 //TODO make this list available via config
 //limit access to this origin list
@@ -93,9 +96,10 @@ APP.use('/stops-all', STOPSALLROUTER);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
 APP.use('/route-count', ROUTECOUNT);
+APP.use('/route-short-name', ROUTESHORTNAME);
+APP.use('/trip-count', TRIPCOUNT);
 APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
-APP.use('/route-short-name', ROUTESHORTNAME);
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
 APP.use('/service-overview', ROUTESERVICEOVERVIEW);
