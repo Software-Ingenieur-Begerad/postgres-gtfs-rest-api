@@ -10,7 +10,9 @@ REST API to request GTFS data from postgres database
 
 # General
 
-TODO
+Requirements:
+
+* Node.js >= 10
 
 # Quick Start Guide
 
@@ -42,14 +44,6 @@ npm run start
 
 # SQL Statemants
 
-## To-do List
-
-* How many routes is an agency serving in the schedule?
-
-* Show a calendar for a trip
-
-## VBN GTFS Data Set
-
 * get a certain service by service_id
 ```
 select * from calendar where service_id='675';
@@ -61,37 +55,31 @@ select agency.agency_name, routes.route_short_name, routes.agency_id, trips.rout
 ```
 
 * get all routes from agency
-
 ```
 select route_short_name from routes,agency where routes.agency_id=agency.agency_id and agency.agency_id='381';
 ```
 
 * get trip direction from trip number
-
 ```
 select trip_headsign from trips where trip_short_name='1226016';
 ```
 
 * get route number from trip number
-
 ```
 select routes.route_short_name from routes, trips where trips.trip_short_name='1226015' AND routes.route_id=trips.route_id;
 ```
 
 * get agency name from route number
-
 ```
 select agency.agency_name from agency,routes where routes.route_id='47189' AND routes.agency_id=agency.agency_id;
 ```
 
 * get agency URL from route number
-
 ```
 select agency.agency_url from agency,routes where routes.route_id='47189' AND routes.agency_id=agency.agency_id;
 ```
 
 * other
-
 ```
 select route_id,trip_headsign from trips where trip_short_name='1226016';
 select * from routes where route_id='47189';

@@ -1,89 +1,27 @@
 # Postgres-gtfs-rest-api Setup
 
 ## Table of Contents
-0. [Prepqration](#Preparation)
-1. [Deployment with pm2](#deployment-with-pm2)
-2. [Deployment with Monit](#deployment-with-monit)
+0. [Prepqration](#preparation)
+1. [Deployment with Monit](#deployment-with-monit)
+2. [Deployment with pm2](#deployment-with-pm2)
 
 # Preparation
 
-* check out git repositories onto a development system as descirpted in the
+* check out git repository as descirbted in the
 [Quick Start Guide](../README.md#Quick-Start-Guide)
+* download GTFS static file in question
+* make use of [this](https://github.com/Software-Ingenieur-Begerad/gtfs2psqlschema#readme) repository to load GTFS data into Postgres database
+* set up ssh tunnel\
+```
+ssh -L <local port>:localhost:5432 <user>@<postgrs host>
+```
+* create schema\
+```
+~/git/gtfs2psqlschema/gtfs_schema.sh . > <schema name>.sql
+```
+* load feed into database\
+```
+psql --host=localhost --port=5442 --username=<usr> --dbname=<db> --file=<schema name> --password
 
-# Deployment with Pm2
-
-* archive project and copy onto host system
-```
-cd ..
-tar -czvf <archive name>.tar.gz --exclude={"postgres-gtfs-rest-api/.git","postgres-gtfs-rest-api/node_modules"} postgres-gtfs-rest-api/
-scp -P <host ssh port> <archive name>.tar.gz  <user>@<host>.<domain>:~
-```
-
-* [Setup Node.js and NPM](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/node.md) on target system
-
-* copy service source into the working folder
-```
-sudo tar -xzf ~/<archive name>.tar.gz -C /opt/
-```
-
-* install dependencies
-```
-cd /opt/<archive name>
-npm i
-```
-
-* set up service environment on host system
-```
-sudo vi /opt/<archive name>/.env
-```
-
-* define the following environment variables
-```
-DB_HOST=<host running database>
-DB_PORT=<port of host running database>
-DB_USER=<user granted permissions for database>
-DB_PASSWORD=<user key>
-DB_NAME=<database name>
-NODE_ENV=<node environment mode>
-PORT=<port offering this service>
-```
-
-* create group and user <service name>
-like this [setup](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/grp-usr.md)
-
-* adjust group and user privileges
-```
-sudo chown -R <service name>:<service name> /opt/<archive name>
-```
-
-* prepare pm2 like this [setup](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/pm2.md)
-
-* start the service as npm start script with PM2
-```
-cd /opt/<archive name>
-pm2 start --name <archive name> npm -- start --watch
-```
-
-* register/save the current list of processes you want to manage using PM2 so that they will re-spawn at system boot (every time it is expected or an unexpected server restart)
-```
-pm2 save
-```
-
-* restart your system, and check if all the serviceis running under PM2
-```
-pm2 ls
-```
-or
-```
-pm2 status
-```
-
-* configure web server as proxy for instance with this [example](etc/apache2/sites-available/example.conf) config file for Apache2
-
-* if service shall be provided to other consumers than localhost, adjust firewall accordingsly
-
-# Deployment With Monit
-
-```
-TODO
-```
+# [Deployment with Monit](./deployment-with-monit.md)
+# [Deployment with pm2](./deployment-with-pm2.md)
