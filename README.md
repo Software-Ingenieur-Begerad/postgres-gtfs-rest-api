@@ -33,7 +33,7 @@ npm i
 DEBUG=trip-count,route-count,service-overview,mapping,gtfs,date,servicedays,service,trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
 ```
 
-## Production deployment
+## Production setup
 
 * run the following instruction to start the service in production mode
 ```

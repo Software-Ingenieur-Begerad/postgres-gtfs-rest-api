@@ -1,11 +1,16 @@
 # Postgres-gtfs-rest-api Setup
 
-use the following steps to setup this service
+## Table of Contents
+0. [Prepqration](#Preparation)
+1. [Deployment with pm2](#deployment-with-pm2)
+2. [Deployment with Monit](#deployment-with-monit)
 
-## Preparation
+# Preparation
 
 * check out git repositories onto a development system as descirpted in the
 [Quick Start Guide](../README.md#Quick-Start-Guide)
+
+# Deployment with Pm2
 
 * archive project and copy onto host system
 ```
@@ -15,8 +20,6 @@ scp -P <host ssh port> <archive name>.tar.gz  <user>@<host>.<domain>:~
 ```
 
 * [Setup Node.js and NPM](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/node.md) on target system
-
-## Automatic Service Setup
 
 * copy service source into the working folder
 ```
@@ -79,9 +82,8 @@ pm2 status
 
 * if service shall be provided to other consumers than localhost, adjust firewall accordingsly
 
-## Manual Service Invocation For Development
-* call service manually
+# Deployment With Monit
+
 ```
-npm i
-npm run dev
+TODO
 ```
