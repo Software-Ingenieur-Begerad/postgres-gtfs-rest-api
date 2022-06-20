@@ -2,8 +2,8 @@
 
 ## Table of Contents
 0. [Prepqration](#preparation)
-1. [Deployment with Monit](#deployment-with-monit)
-2. [Deployment with pm2](#deployment-with-pm2)
+1. [Deployment with Monit](./deployment-with-monit.md)
+2. [Deployment with pm2](./deployment-with-pm2.md)
 
 # Preparation
 
