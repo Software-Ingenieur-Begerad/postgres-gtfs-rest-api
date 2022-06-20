@@ -13,6 +13,7 @@ REST API to request GTFS data from postgres database
 Requirements:
 
 * Node.js >= 10
+* PostgreSQL database
 
 # Quick Start Guide
 
