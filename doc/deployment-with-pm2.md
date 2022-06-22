@@ -66,6 +66,8 @@ or
 pm2 status
 ```
 
-* configure web server as proxy for instance with this [example](etc/apache2/sites-available/example.conf) config file for Apache2
+* configure web server as proxy for instance with this
+[example](../etc/apache2/sites-available/example.conf)
+config file for Apache2
 
 * if service shall be provided to other consumers than localhost, adjust firewall accordingsly
