@@ -11,6 +11,18 @@ const CORS = require("cors");
 //get API root with alive msg
 const ROOTROUTER = require('./route/root');
 
+//get array[0]['count'] int value with the overall number of tables in public schema
+const tableCount = require('./route/table-count');
+const tableCalendarDatesCount = require('./route/table-calendar-dates-count');
+const tableAgencyCount = require('./route/table-agency-count');
+const tableRoutesCount = require('./route/table-routes-count');
+const tableShapesCount = require('./route/table-shapes-count');
+const tableTripsCount = require('./route/table-trips-count');
+const tableCalendarCount = require('./route/table-calendar-count');
+const tableFrequenciesCount = require('./route/table-frequencies-count');
+const tableLevelsCount = require('./route/table-levels-count');
+//get array[i]['table_name'] string value with all table names in public schema
+const tableNames = require('./route/table-names');
 //get agencies using pagination
 const AGENCYROUTER = require('./route/agency');
 
@@ -103,6 +115,15 @@ APP.use('/trips', TRIPSROUTER);
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
 APP.use('/service-overview', ROUTESERVICEOVERVIEW);
-
+APP.use('/table-calendar-dates-count', tableCalendarDatesCount);
+APP.use('/table-agency-count', tableAgencyCount);
+APP.use('/table-routes-count', tableRoutesCount);
+APP.use('/table-shapes-count', tableShapesCount);
+APP.use('/table-trips-count', tableTripsCount);
+APP.use('/table-calendar-count', tableCalendarCount);
+APP.use('/table-frequencies-count', tableFrequenciesCount);
+APP.use('/table-levels-count', tableLevelsCount);
+APP.use('/table-count', tableCount);
+APP.use('/table-names', tableNames);
 module.exports=APP;
 DEBUG('app done..');
