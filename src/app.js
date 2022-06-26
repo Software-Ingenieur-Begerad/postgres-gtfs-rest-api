@@ -115,7 +115,7 @@ APP.use('/trips', TRIPSROUTER);
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
 APP.use('/service-overview', ROUTESERVICEOVERVIEW);
-APP.use('/table-calendar-dates-count', tableCalendarDatesCount);
+APP.use('/table-calendar_dates-count', tableCalendarDatesCount);
 APP.use('/table-agency-count', tableAgencyCount);
 APP.use('/table-routes-count', tableRoutesCount);
 APP.use('/table-shapes-count', tableShapesCount);
