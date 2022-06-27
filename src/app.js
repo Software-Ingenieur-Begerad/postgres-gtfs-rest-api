@@ -37,6 +37,7 @@ const AGENCYURLROUTER = require('./route/agency-url');
 
 //get all stops
 const STOPSALLROUTER = require('./route/stops-all');
+const shapesOsetLimit = require('./route/shapes-oset-limit');
 
 //get all frequencies
 const FREQUENCIESALLROUTER = require('./route/frequencies-all');
@@ -105,6 +106,7 @@ APP.use('/agency-all', AGENCYALLROUTER);
 APP.use('/agency-name', AGENCYNAMEROUTER);
 APP.use('/agency-url', AGENCYURLROUTER);
 APP.use('/stops-all', STOPSALLROUTER);
+APP.use('/shapes-oset-limit',shapesOsetLimit);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
 APP.use('/route-count', ROUTECOUNT);
