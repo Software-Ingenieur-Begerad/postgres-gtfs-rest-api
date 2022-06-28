@@ -145,6 +145,7 @@ APP.use('/calendar-oset-limit',calendarOsetLimit);
 APP.use('/calendar_dates-oset-limit',calendarDatesOsetLimit);
 APP.use('/frequencies-oset-limit',frequenciesOsetLimit);
 APP.use('/levels-oset-limit',levelsOsetLimit);
+APP.use('/pathways-oset-limit',pathwaysOsetLimit);
 APP.use('/routes-oset-limit',routesOsetLimit);
 APP.use('/shapes-oset-limit',shapesOsetLimit);
 APP.use('/stops-oset-limit',stopsOsetLimit);
