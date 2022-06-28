@@ -148,6 +148,7 @@ APP.use('/levels-oset-limit',levelsOsetLimit);
 APP.use('/routes-oset-limit',routesOsetLimit);
 APP.use('/shapes-oset-limit',shapesOsetLimit);
 APP.use('/stops-oset-limit',stopsOsetLimit);
+APP.use('/transfers-oset-limit',transfersOsetLimit);
 APP.use('/stop_times-oset-limit',stopTimesOsetLimit);
 //count
 APP.use('/route-count', ROUTECOUNT);
