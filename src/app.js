@@ -37,7 +37,30 @@ const AGENCYURLROUTER = require('./route/agency-url');
 
 //get all stops
 const STOPSALLROUTER = require('./route/stops-all');
+//get agency using offset and limit
+const agencyOsetLimit = require('./route/agency-oset-limit');
+//get calendar using offset and limit
+const calendarOsetLimit = require('./route/calendar-oset-limit');
+//get calendar_dates using offset and limit
+const calendarDatesOsetLimit = require('./route/calendar-dates-oset-limit');
+//get frequencies using offset and limit
+const frequenciesOsetLimit = require('./route/frequencies-oset-limit');
+//get levels using offset and limit
+const levelsOsetLimit = require('./route/levels-oset-limit');
+//get pathways using offset and limit
+const pathwaysOsetLimit = require('./route/pathways-oset-limit');
+//get routes using offset and limit
+const routesOsetLimit = require('./route/routes-oset-limit');
+//get shapes using offset and limit
 const shapesOsetLimit = require('./route/shapes-oset-limit');
+//get stops using offset and limit
+const stopsOsetLimit = require('./route/stops-oset-limit');
+//get stop_times using offset and limit
+const stopTimesOsetLimit = require('./route/stop-times-oset-limit');
+//get transfers using offset and limit
+const transfersOsetLimit = require('./route/transfers-oset-limit');
+//get trips using offset and limit
+const tripsOsetLimit = require('./route/trips-oset-limit');
 
 //get all frequencies
 const FREQUENCIESALLROUTER = require('./route/frequencies-all');
@@ -107,6 +130,7 @@ APP.use('/agency-name', AGENCYNAMEROUTER);
 APP.use('/agency-url', AGENCYURLROUTER);
 APP.use('/stops-all', STOPSALLROUTER);
 APP.use('/shapes-oset-limit',shapesOsetLimit);
+APP.use('/stops-oset-limit',stopsOsetLimit);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
 APP.use('/route-count', ROUTECOUNT);

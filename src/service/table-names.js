@@ -1,4 +1,4 @@
-const DEBUG=require('debug')('table-names');
+const DEBUG=require('debug')('debug');
 DEBUG('table-names start...');
 
 const db = require('./db');
