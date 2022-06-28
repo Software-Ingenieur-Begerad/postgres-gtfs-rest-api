@@ -1,6 +1,3 @@
-const DEBUG=require('debug')('table-routes-count');
-DEBUG('table-routes-count start...');
-
 const EXPRESS = require('express');
 const ROUTER = EXPRESS.Router();
 const tableCount = require('../service/table-routes-count');
@@ -17,4 +14,3 @@ ROUTER.get('/', async function(req, res, next) {
 });
 
 module.exports = ROUTER;
-DEBUG('table-routes-count done.');

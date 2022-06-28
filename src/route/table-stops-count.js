@@ -1,6 +1,6 @@
 const EXPRESS = require('express');
 const ROUTER = EXPRESS.Router();
-const tableCount = require('../service/table-trips-count');
+const tableCount = require('../service/table-stops-count');
 const UTILS=require('../utils');
 //GET listing
 ROUTER.get('/', async function(req, res, next) {

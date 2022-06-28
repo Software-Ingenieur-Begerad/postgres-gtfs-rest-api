@@ -13,14 +13,19 @@ const ROOTROUTER = require('./route/root');
 
 //get array[0]['count'] int value with the overall number of tables in public schema
 const tableCount = require('./route/table-count');
-const tableCalendarDatesCount = require('./route/table-calendar-dates-count');
+
 const tableAgencyCount = require('./route/table-agency-count');
-const tableRoutesCount = require('./route/table-routes-count');
-const tableShapesCount = require('./route/table-shapes-count');
-const tableTripsCount = require('./route/table-trips-count');
 const tableCalendarCount = require('./route/table-calendar-count');
+const tableCalendarDatesCount = require('./route/table-calendar-dates-count');
 const tableFrequenciesCount = require('./route/table-frequencies-count');
 const tableLevelsCount = require('./route/table-levels-count');
+const tablePathwaysCount = require('./route/table-pathways-count');
+const tableRoutesCount = require('./route/table-routes-count');
+const tableShapesCount = require('./route/table-shapes-count');
+const tableTransfersCount = require('./route/table-transfers-count');
+const tableTripsCount = require('./route/table-trips-count');
+const tableStopsCount = require('./route/table-stops-count');
+const tableStopTimesCount = require('./route/table-stop-times-count');
 //get array[i]['table_name'] string value with all table names in public schema
 const tableNames = require('./route/table-names');
 //get agencies using pagination
@@ -37,6 +42,7 @@ const AGENCYURLROUTER = require('./route/agency-url');
 
 //get all stops
 const STOPSALLROUTER = require('./route/stops-all');
+
 //get agency using offset and limit
 const agencyOsetLimit = require('./route/agency-oset-limit');
 //get calendar using offset and limit
@@ -122,34 +128,53 @@ APP.use(CORS({
         return callback(null, true);
     }
 }));
-
+//api enable/disable?
 APP.use('/', ROOTROUTER);
+//agency
 APP.use('/agency', AGENCYROUTER);
-APP.use('/agency-all', AGENCYALLROUTER);
 APP.use('/agency-name', AGENCYNAMEROUTER);
 APP.use('/agency-url', AGENCYURLROUTER);
-APP.use('/stops-all', STOPSALLROUTER);
-APP.use('/shapes-oset-limit',shapesOsetLimit);
-APP.use('/stops-oset-limit',stopsOsetLimit);
+
+APP.use('/agency-all', AGENCYALLROUTER);
 APP.use('/frequencies-all', FREQUENCIESALLROUTER);
 APP.use('/routes-all', ROUTESALLROUTER);
+APP.use('/stops-all', STOPSALLROUTER);
+//offset and limit
+APP.use('/agency-oset-limit',agencyOsetLimit);
+APP.use('/calendar-oset-limit',calendarOsetLimit);
+APP.use('/calendar_dates-oset-limit',calendarDatesOsetLimit);
+APP.use('/frequencies-oset-limit',frequenciesOsetLimit);
+APP.use('/levels-oset-limit',levelsOsetLimit);
+APP.use('/routes-oset-limit',routesOsetLimit);
+APP.use('/shapes-oset-limit',shapesOsetLimit);
+APP.use('/stops-oset-limit',stopsOsetLimit);
+APP.use('/stop_times-oset-limit',stopTimesOsetLimit);
+//count
 APP.use('/route-count', ROUTECOUNT);
-APP.use('/route-short-name', ROUTESHORTNAME);
 APP.use('/trip-count', TRIPCOUNT);
+
+APP.use('/route-short-name', ROUTESHORTNAME);
 APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
 APP.use('/service-overview', ROUTESERVICEOVERVIEW);
-APP.use('/table-calendar_dates-count', tableCalendarDatesCount);
+//entry count
 APP.use('/table-agency-count', tableAgencyCount);
-APP.use('/table-routes-count', tableRoutesCount);
-APP.use('/table-shapes-count', tableShapesCount);
-APP.use('/table-trips-count', tableTripsCount);
 APP.use('/table-calendar-count', tableCalendarCount);
+APP.use('/table-calendar_dates-count', tableCalendarDatesCount);
 APP.use('/table-frequencies-count', tableFrequenciesCount);
 APP.use('/table-levels-count', tableLevelsCount);
+APP.use('/table-pathways-count', tablePathwaysCount);
+APP.use('/table-routes-count', tableRoutesCount);
+APP.use('/table-shapes-count', tableShapesCount);
+APP.use('/table-transfers-count', tableTransfersCount);
+APP.use('/table-trips-count', tableTripsCount);
+APP.use('/table-stops-count', tableStopsCount);
+APP.use('/table-stop_times-count', tableStopTimesCount);
+//number of tables
 APP.use('/table-count', tableCount);
+//array with name of all tables
 APP.use('/table-names', tableNames);
 module.exports=APP;
 DEBUG('app done..');

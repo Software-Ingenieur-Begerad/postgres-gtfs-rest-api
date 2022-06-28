@@ -4,7 +4,7 @@ const config = require('../config');
 
 async function get() {
     const DATA = await db.query(
-	`SELECT count(*) FROM trips`);
+	`SELECT count(*) FROM stop_times`);
     //TODO if DATA {message	"getaddrinfo ENOTFOUND <HOST like acer>"} then handle
     return DATA;
 }
