@@ -1,4 +1,4 @@
-const DEBUG=require('debug')('db');
+const DEBUG=require('debug')('debug');
 DEBUG('db start...');
 
 const { Pool } = require('pg');

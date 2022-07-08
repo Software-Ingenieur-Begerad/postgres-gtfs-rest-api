@@ -1,4 +1,4 @@
-const DEBUG=require('debug')('config');
+const DEBUG=require('debug')('debug');
 DEBUG('config start...');
 
 require('dotenv').config();
@@ -16,5 +16,7 @@ const config = {
 
 DEBUG('config host: '+config.db.host);
 DEBUG('config port: '+config.db.port);
+DEBUG('config user: '+config.db.user);
+DEBUG('config database: '+config.db.database);
 module.exports = config;
 DEBUG('config done.');

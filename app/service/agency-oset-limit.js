@@ -1,6 +1,7 @@
+const debug=require('debug')('debug');
+debug('agencyOsetLimit start...');
 const db = require('./db');
 const helper = require('../helper');
-const config = require('../config');
 
 async function get(oset = 1,limit = 100) {
     const offset = helper.getOffset(oset, limit);
@@ -14,3 +15,4 @@ async function get(oset = 1,limit = 100) {
 module.exports = {
   get
 };
+debug('agencyOsetLimit done.');

@@ -1,5 +1,4 @@
-const debug=require('debug')('mapping');
-
+const debug=require('debug')('debug');
 function updateMap(time,tripId,tripShortName,map){
     //debug('time: '+time);
     //time map empty
@@ -73,6 +72,12 @@ function trips2Array(map){
     return array;
 }
 
+function set2Array(set){
+    let array=Array.from(set.values());
+    //debug('set2Array() array.length: '+array.length);
+    return array;
+}
+
 function trips2Obj(map){
     let object={};
     map.forEach((value,key)=>{
@@ -86,5 +91,6 @@ function trips2Obj(map){
 module.exports={
     updateMap,
     times2Obj,
-    times2Array
+    times2Array,
+    set2Array
 };
