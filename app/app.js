@@ -89,6 +89,9 @@ const ROUTESERVICEOVERVIEW = require('./route/service-overview');
 //get number of routes belonging to the same agency_id
 const ROUTECOUNT = require('./route/route-count');
 
+//get array of all service dates by service_id
+const serviceAvailability=require('./route/service-availability');
+
 //get array of dates when service is available by service_id
 const datesServiceAvailable=require('./route/dates-service-available');
 
@@ -175,6 +178,7 @@ APP.use('/service-overview', ROUTESERVICEOVERVIEW);
 APP.use('/dates-service-available',datesServiceAvailable);
 APP.use('/dates-service-added',datesServiceAdded);
 APP.use('/dates-service-removed',datesServiceRemoved);
+APP.use('/service-availability',serviceAvailability);
 //entry count
 APP.use('/table-agency-count', tableAgencyCount);
 APP.use('/table-calendar-count', tableCalendarCount);

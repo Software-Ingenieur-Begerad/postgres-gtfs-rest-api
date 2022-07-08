@@ -10,7 +10,7 @@ async function get(serviceId = 0) {
     const data = await db.query(query);
     //debug('datesServiceAdded data.length: '+data.length);
     //debug('datesServiceAdded [0]: '+JSON.stringify(data[0]));
-    const dates=data.map(gtfs.getDatesFromCalendarDates);
+    const dates=data.map(value=>gtfs.getDatesFromCalendarDates(value).getTime());
     debug('datesServiceAdded dates.length: '+dates.length);
     return dates;
 }

@@ -33,7 +33,7 @@ npm i
 
 * run the following instruction to start the service in development mode
 ```
-DEBUG=table-calendar-dates-count,table-agency-count,table-routes-count,table-shapes-count,table-trips-count,table-calendar-count,table-frequencies-count,table-levels-count,table-names,table-count,trip-count,route-count,service-overview,mapping,gtfs,date,servicedays,service,trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,config,index,app,root,agency,db npm run dev
+DEBUG=table-calendar-dates-count,table-agency-count,table-routes-count,table-shapes-count,table-trips-count,table-calendar-count,table-frequencies-count,table-levels-count,table-names,table-count,trip-count,route-count,service-overview,gtfs,date,servicedays,service,trips,agency-url,agency-name,route-short-name,trip-headsign,routes,frequencies,stops,index,app,root,agency npm run dev
 ```
 
 ## Production setup

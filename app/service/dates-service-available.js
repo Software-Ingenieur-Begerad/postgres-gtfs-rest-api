@@ -10,7 +10,7 @@ async function get(serviceId = 0) {
     //debug('datesServiceAvailable query: '+query);
     const dataService = await db.query(query);
     //debug('datesServiceAvailable dataService.length: '+dataService.length);
-    debug('datesServiceAvailable service_id: '+dataService[0].service_id);
+    //debug('datesServiceAvailable service_id: '+dataService[0].service_id);
     const monday=dataService[0].monday;
     //debug('monday: '+monday);
     const tuesday=dataService[0].tuesday;
