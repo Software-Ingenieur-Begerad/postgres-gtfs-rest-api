@@ -3,7 +3,7 @@ const HTTPS = require('https');
 const FS = require('fs');
 
 DEBUG('index start...');
-const APP=require('./src/app');
+const APP=require('./app/app');
 
 //TODO make port available via config
 //set port
