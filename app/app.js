@@ -92,8 +92,11 @@ const ROUTECOUNT = require('./route/route-count');
 //get array of dates when service is available by service_id
 const datesServiceAvailable=require('./route/dates-service-available');
 
-//get arrayt of dates when service is added by service_id
+//get array of dates when service is added by service_id
 const datesServiceAdded=require('./route/dates-service-added');
+
+//get array of dates when service is removed by service_id
+const datesServiceRemoved=require('./route/dates-service-removed');
 
 //get trip_headsign from trip_short_name
 const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
@@ -171,6 +174,7 @@ APP.use('/servicedays', ROUTESERVICEDAYS);
 APP.use('/service-overview', ROUTESERVICEOVERVIEW);
 APP.use('/dates-service-available',datesServiceAvailable);
 APP.use('/dates-service-added',datesServiceAdded);
+APP.use('/dates-service-removed',datesServiceRemoved);
 //entry count
 APP.use('/table-agency-count', tableAgencyCount);
 APP.use('/table-calendar-count', tableCalendarCount);

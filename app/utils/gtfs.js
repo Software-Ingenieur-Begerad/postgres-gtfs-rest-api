@@ -1,5 +1,9 @@
 const debug=require('debug')('gtfs');
 
+function getDatesFromCalendarDates(value){
+    //debug('getDatesFromCalendarDates value: '+JSON.stringify(value));
+    return gtfsDate2NodeDate(value.date);
+}
 function findSubStr(str, start, end) {
     var index = str.slice(start, end);
     //debug('index: '+index);
@@ -25,5 +29,6 @@ function gtfsDate2NodeDate(date){
 }
 
 module.exports={
-    gtfsDate2NodeDate
+    gtfsDate2NodeDate,
+    getDatesFromCalendarDates
 };
