@@ -3,10 +3,9 @@ const debug=require('debug')('debug');
 const db = require('./db');
 const tripsByRouteId=require('./trips-by-route-id');
 const serviceAvailability=require('./service-availability');
-const mapServiceAbility=new Map();
-const setServiceAbility=new Set();
 const mapping=require('../utils/mapping');
 async function get(routeId = 0) {
+    const setServiceAbility=new Set();
     //debug('service-ability-by-route-id routeId: '+routeId);
     const aryTripsByRouteId=await tripsByRouteId.get(routeId);
     //debug('service-ability-by-route-id aryTripsByRouteId.length: '+aryTripsByRouteId.length);
