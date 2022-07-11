@@ -107,6 +107,9 @@ const TRIPHEADSIGNROUTER = require('./route/trip-headsign');
 //get all trips that belong to a certain route_short_name
 const TRIPSROUTER = require('./route/trips');
 
+//get all trips that belong to the specified route_id
+const tripsByRouteId = require('./route/trips-by-route-id');
+
 //get number of trips belonging to the same agency_id
 const TRIPCOUNT = require('./route/trip-count');
 
@@ -169,8 +172,10 @@ APP.use('/route-count', ROUTECOUNT);
 APP.use('/trip-count', TRIPCOUNT);
 
 APP.use('/route-short-name', ROUTESHORTNAME);
+//trips
 APP.use('/trip-headsign', TRIPHEADSIGNROUTER);
 APP.use('/trips', TRIPSROUTER);
+APP.use('/trips-by-route-id', tripsByRouteId);
 //service
 APP.use('/service', ROUTESERVICE);
 APP.use('/servicedays', ROUTESERVICEDAYS);
