@@ -1,11 +1,11 @@
 const debug=require('debug')('debug');
-debug('datesServiceAvailable start...');
+//debug('datesServiceAvailable start...');
 const db = require('./db');
 const date=require('../utils/date');
 const gtfs=require('../utils/gtfs');
 const mapping=require('../utils/mapping');
 async function get(serviceId = 0) {
-    debug('datesServiceAvailable serviceId: '+serviceId);
+    //debug('datesServiceAvailable serviceId: '+serviceId);
     const query=`SELECT * FROM calendar WHERE service_id='${serviceId}';`;
     //debug('datesServiceAvailable query: '+query);
     const dataService = await db.query(query);
@@ -49,7 +49,7 @@ async function get(serviceId = 0) {
 	}
 	dateNext=new Date(dateNext.setDate(dateNext.getDate()+1));
     }
-    debug('datesServiceAvailable size: '+datesServiceAvailable.size);
+    //debug('datesServiceAvailable size: '+datesServiceAvailable.size);
     return mapping.set2Array(datesServiceAvailable);
 }
 module.exports = {
