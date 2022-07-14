@@ -78,6 +78,16 @@ function set2Array(set){
     return array;
 }
 
+//transform map to object
+function map2Obj(map){
+    let object={};
+    map.forEach((value,key)=>{
+	object[key]=value;
+    });
+    return object;
+}
+
+//TODO make function generic: use map2Obj() instead
 function trips2Obj(map){
     let object={};
     map.forEach((value,key)=>{
@@ -92,5 +102,6 @@ module.exports={
     updateMap,
     times2Obj,
     times2Array,
-    set2Array
+    set2Array,
+    map2Obj
 };

@@ -4,62 +4,72 @@ const db = require('./db');
 const tripsByRouteId=require('./trips-by-route-id');
 const serviceAvailability=require('./service-availability');
 const mapping=require('../utils/mapping');
+const calendar=require('../utils/calendar');
 async function get(routeId = 0) {
-    const setServiceAbility=new Set();
     debug('trip-calendar-by-route-id routeId: '+routeId);
-    const aryTripsByRouteId=await tripsByRouteId.get(routeId);
-    debug('trip-calendar-by-route-id aryTripsByRouteId.length: '+aryTripsByRouteId.length);
-    const mapServiceIds=new Map();
-    debug('trip-calendar-by-route-id mapServiceIds.size: '+mapServiceIds.size);
-    //set map
-    for(var i=0;i<aryTripsByRouteId.length;i++){
-	const tripId=aryTripsByRouteId[i].trip_id;
-	//debug('trip-calendar-by-route-id tripId: '+tripId);
-	const serviceId=aryTripsByRouteId[i].service_id;
-	//debug('trip-calendar-by-route-id serviceId: '+serviceId);
-	if(!mapServiceIds.has(serviceId)){
-	    const arySA=await serviceAvailability.get(serviceId);
-	    mapServiceIds.set(serviceId,arySA);
-	}
-    };
-    debug('trip-calendar-by-route-id mapServiceIds.size: '+mapServiceIds.size);
-    //TODO iterate over all trip_id values
-    //TODO increment a day if a trip has a service that day
-    
-    const today=new Date();
-    debug('trip-calendar-by-route-id today: '+today);
-    const todayTs=today.getTime();
-    debug('trip-calendar-by-route-id todayTs: '+todayTs);
-    const todayZeroH=today.setHours(0,0,0,0);
-    debug('trip-calendar-by-route-id todayZeroH: '+todayZeroH);
-    const todayZeroH2=new Date(new Date().toDateString());
-    debug('trip-calendar-by-route-id todayZeroH2: '+todayZeroH2);
-    const todayZeroH2Ts=todayZeroH2.getTime();
-    debug('trip-calendar-by-route-id todayZeroH2Ts: '+todayZeroH2Ts);
-    let before7DaysDate=new Date(todayZeroH2);
-    debug('trip-calendar-by-route-id before7DaysDate: '+before7DaysDate);
-    before7DaysDate=new Date(before7DaysDate.setDate(before7DaysDate.getDate() - 7));
-    debug('trip-calendar-by-route-id before7DaysDate: '+before7DaysDate);
-    let after7DaysDate=new Date(todayZeroH2);
-    debug('trip-calendar-by-route-id after7DaysDate: '+after7DaysDate);
-    after7DaysDate=new Date(after7DaysDate.setDate(after7DaysDate.getDate() + 7));
-    debug('trip-calendar-by-route-id after7DaysDate: '+after7DaysDate);
-    /*TODO
-    const setServiceIds=new Set();
-    aryTripsByRouteId.forEach(value=>setServiceIds.add(value.service_id));
-    //debug('trip-calendar-by-route-id setServiceIds.size: '+setServiceIds.size);
-    for(value of setServiceIds.values()) {
-	const arySA=await serviceAvailability.get(value);
-	//debug('trip-calendar-by-route-id arySA.length: '+arySA.length);
-	setServiceAbility.add(arySA);
-    }
-    debug('trip-calendar-by-route-id setServiceAbility.size: '+setServiceAbility.size);
-    return mapping.set2Array(setServiceAbility);
-    */
-    return [];
 
+    //get calendar map
+    const mapCalendar=calendar.getCalendarMap();
+    debug('trip-calendar-by-route-id mapCalendar.size: '+mapCalendar.size);
+
+    //get trips array
+    const aryTrips=await tripsByRouteId.get(routeId);
+    debug('trip-calendar-by-route-id aryTrips.length: '
+	  +aryTrips.length);
+
+    //init services map
+    const mapServices=new Map();
+    debug('trip-calendar-by-route-id mapServices.size: '+mapServices.size);
+
+    //init trip calendar map
+    const mapTripCalendar=new Map();
+    mapCalendar.forEach((value,key)=>{
+	debug('trip-calendar-by-route-id mapCalendar key: '+key+', value: '+value);
+	mapTripCalendar.set(value,0);
+    });
+    debug('trip-calendar-by-route-id mapTripCalendar.size: '+mapTripCalendar.size);
+
+    //set trip calendar map
+    //iterate over trips
+    for(var i=0;i<aryTrips.length;i++){
+	const tripId=aryTrips[i].trip_id;
+	debug('trip-calendar-by-route-id tripId: '+tripId);
+	const serviceId=aryTrips[i].service_id;
+	debug('trip-calendar-by-route-id serviceId: '+serviceId);
+
+	//get service
+	let service=[];
+	if(!mapServices.has(serviceId)){
+	    service=await serviceAvailability.get(serviceId);
+	    mapServices.set(serviceId,service);
+	}else{
+	    service=mapServices.get(serviceId);
+	}
+	debug('trip-calendar-by-route-id service.length: '+service.length);
+
+	//iterate over service availabiltiy
+	for(var j=0;j<service.length;j++){
+	    debug('trip-calendar-by-route-id service j: '+j);
+	    debug('trip-calendar-by-route-id service[j]: '+service[j]);
+	    mapCalendar.forEach((value,key)=>{
+		//debug('trip-calendar-by-route-id mapCalendar value: '+value);
+		if(value===service[j]){
+		    let tripCount=mapTripCalendar.get(value);
+		    debug('trip-calendar-by-route-id tripCount: '+tripCount);
+		    tripCount++;
+		    debug('trip-calendar-by-route-id tripCount: '+tripCount);
+		    mapTripCalendar.set(value,tripCount);
+		}
+	    });
+	}
+    }
+
+    mapTripCalendar.forEach((value,key)=>{
+	debug('trip-calendar-by-route-id mapTripCalendar key: '+key+', value: '+value);
+    });
+    //debug('trip-calendar-by-route-id done.');
+    return mapping.map2Obj(mapTripCalendar);
 };      
 module.exports = {
     get
 }
-//debug('trip-calendar-by-route-id done.');
