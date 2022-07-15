@@ -51,6 +51,7 @@ const STOPSALLROUTER = require('./route/stops-all');
 
 //get table entries using offset and limit
 const agencyOsetLimit = require('./route/agency-oset-limit');
+const agencyIdName = require('./route/agency-id-name');
 const calendarOsetLimit = require('./route/calendar-oset-limit');
 const calendarDatesOsetLimit = require('./route/calendar-dates-oset-limit');
 const frequenciesOsetLimit = require('./route/frequencies-oset-limit');
@@ -163,6 +164,7 @@ APP.use('/stops-all', STOPSALLROUTER);
 
 //offset and limit
 APP.use('/agency-oset-limit',agencyOsetLimit);
+APP.use('/agency-id-name',agencyIdName);
 APP.use('/calendar-oset-limit',calendarOsetLimit);
 APP.use('/calendar_dates-oset-limit',calendarDatesOsetLimit);
 APP.use('/frequencies-oset-limit',frequenciesOsetLimit);
