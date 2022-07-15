@@ -6,7 +6,7 @@ const mapping=require('../utils/mapping');
 const calendar=require('../utils/calendar');
 async function get(routeId = 0) {
     //debug('trip-calendar-by-route-id start...');
-    debug('trip-calendar-by-route-id routeId: '+routeId);
+    //debug('trip-calendar-by-route-id routeId: '+routeId);
 
     //get calendar map
     const mapCalendar=calendar.getCalendarMap();
@@ -26,7 +26,7 @@ async function get(routeId = 0) {
 	//debug('trip-calendar-by-route-id mapCalendar key: '+key+', value: '+value);
 	mapTripCalendar.set(value,0);
     });
-    debug('trip-calendar-by-route-id mapTripCalendar.size: '+mapTripCalendar.size);
+    //debug('trip-calendar-by-route-id mapTripCalendar.size: '+mapTripCalendar.size);
 
     //set trip calendar map
     //iterate over trips
@@ -62,9 +62,6 @@ async function get(routeId = 0) {
 	    });
 	}
     }
-    mapTripCalendar.forEach((value,key)=>{
-	debug('trip-calendar-by-route-id mapTripCalendar key: '+key+', value: '+value);
-    });
     //debug('trip-calendar-by-route-id done.');
     return mapping.map2Obj(mapTripCalendar);
 };      
