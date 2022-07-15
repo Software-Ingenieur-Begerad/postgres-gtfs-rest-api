@@ -5,7 +5,7 @@ const config = require('../config');
 async function get() {
     //debug('agency-all start...');
     const DATA = await db.query(
-	'SELECT * FROM agency');
+	'SELECT agency.agency_id FROM agency');
     //debug('DATA length: '+DATA.length);
     //debug('agency-all done.');
     return DATA;

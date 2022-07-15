@@ -31,6 +31,9 @@ const tableStopTimesCount = require('./route/table-stop-times-count');
 //get all table names in public schema as array[i]['table_name'] object
 const tableNames = require('./route/table-names');
 
+//get all agency_id values
+const agencyIds = require('./route/agencyids');
+
 //get agencies using pagination
 const AGENCYROUTER = require('./route/agency');
 
@@ -150,6 +153,7 @@ APP.use('/', ROOTROUTER);
 APP.use('/agency', AGENCYROUTER);
 APP.use('/agency-name', AGENCYNAMEROUTER);
 APP.use('/agency-url', AGENCYURLROUTER);
+APP.use('/agencyids',agencyIds);
 
 //get all entries from table
 APP.use('/agency-all', AGENCYALLROUTER);
