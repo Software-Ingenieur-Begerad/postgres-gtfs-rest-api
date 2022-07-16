@@ -164,7 +164,7 @@ APP.use('/stops-all', STOPSALLROUTER);
 
 //offset and limit
 APP.use('/agency-oset-limit',agencyOsetLimit);
-APP.use('/agency-id-name',agencyIdName);
+APP.use('/agency-id-name-oset-limit',agencyIdName);
 APP.use('/calendar-oset-limit',calendarOsetLimit);
 APP.use('/calendar_dates-oset-limit',calendarDatesOsetLimit);
 APP.use('/frequencies-oset-limit',frequenciesOsetLimit);
