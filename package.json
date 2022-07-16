@@ -2,7 +2,7 @@
     "private": true,
     "name": "postgres-gtfs-rest-api",
     "description": "REST API to request GTFS data from postgres database",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "main": "index.js",
     "keywords": [
         "public",
